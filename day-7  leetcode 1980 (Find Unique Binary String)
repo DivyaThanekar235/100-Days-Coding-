@@ -1,0 +1,28 @@
+class Solution {
+    int n;
+    Set <String> set;
+    public String findDifferentBinaryString(String[] nums) {
+        n = nums.length;
+        set = new HashSet<>();
+        for(String s: nums){
+            set.add(s);
+        }
+        return Sul(0,"");
+    }
+    private String Sul(int inx, String temp){
+        if(temp.length() == n){
+        if(set.contains(temp) == false)
+        return temp;
+        }
+        if(inx < n){
+        String left = Sul(inx+1, temp+'0');
+        if(left != null)
+        return left;
+
+        String right = Sul(inx+1, temp+'1');
+        if(right != null)
+        return right;
+        }
+        return null;
+    }
+}
